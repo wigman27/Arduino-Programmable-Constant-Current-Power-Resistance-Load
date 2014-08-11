@@ -1,0 +1,23 @@
+Circuit: * C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\LTSpice\Spice Model - Version 3 - LM324.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun Dec 08 14:12:44 2013
+Total elapsed time: 0.266 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2125
+traniter = 2082
+tranpoints = 1042
+accept = 1042
+rejected = 0
+matrix size = 95
+fillins = 75
+solver = Normal
+Thread vector: 17.6/9.7[2] 3.5/1.9[2] 1.4/0.9[2] 0.6/0.9[1]  2592/500
+Matrix Compiler1: 7.12 KB object code size  2.4/0.7/[0.5]
+Matrix Compiler2: off  [0.7]/2.1/1.3
+
+

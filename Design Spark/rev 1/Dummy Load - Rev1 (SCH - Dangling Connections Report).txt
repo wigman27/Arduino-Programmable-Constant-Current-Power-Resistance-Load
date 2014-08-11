@@ -1,0 +1,28 @@
+Dangling Connections Report
+---------------------------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Rev1 (SCH - Dangling Connections Report).txt
+Report Written : Monday, December 02, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Rev1.sch
+Design Title   : 
+Created        : 
+Last Saved     : 9/10/2013 12:07:58 PM
+Editing Time   : 11223 min
+Units          : thou (precision 2)
+
+The following dangling connections have been found.
+These indicate connections attached to component
+pins where there are no other pins in that net.
+
+Net Name  Node   Position
+----------------------------------
+TX        U8.21  23262.50,18187.50
+N0302     U8.1   23262.50,17462.50
+N0356     U8.41  23262.50,17237.50
+N0357     U8.40  23262.50,17137.50
+----------------------------------
+Total:    4
+----------------------------------
+
+End Of Report.

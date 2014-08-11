@@ -1,0 +1,308 @@
+PLOT REPORT
+-----------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load (PCB - PLOT REPORT).txt
+Report Written : Monday, December 16, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.pcb
+Design Title   : 
+Created        : 3/12/2013 9:34:27 PM
+Last Saved     : 16/12/2013 10:46:52 AM
+Editing Time   : 8979 min
+Units          : mm (precision 3)
+
+
+Device Settings
+===============
+
+
+Gerber Settings
+===============
+
+    Leading zero suppression.
+    G01 assumed throughout.
+    Line termination <*> <CR> <LF>.
+    2.3 format absolute inches.
+    Format commands defined in Gerber file.
+    Aperture table defined in Gerber file.
+    Hardware arcs allowed.
+
+
+Drill Settings
+==============
+
+    Excellon Format 1    Format 2.3 absolute in mm.
+    No zero suppression.
+
+
+Plots Output
+============
+
+    Plot Job: "C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.mop"
+
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Top Silkscreen.gbr
+
+    Layers:
+    ----------------
+    Top Silkscreen
+
+    D-Code  Shape  (thou)
+    ---------------------
+    D10     Round 5.00
+    D11     Round 1.00
+    D12     Round 8.00
+    D13     Round 10.00
+    D14     Round 6.00
+    D15     Round 3.00
+    D16     Round 16.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Top Solder Mask.gbr
+
+    Layers:
+    -----------------
+    Top Solder Mask
+
+    D-Code  Shape  (thou)
+    ---------------------------------------------
+    D17     Round 163.48
+    D18     Round 76.00
+    D19     Rectangle 31.00 X 86.00
+    D70     Rectangle 77.00 X 128.00  Rotation 90
+    D71     Rectangle 61.00 X 66.00
+    D20     Square 66.00
+    D21     Round 66.00
+    D22     Rectangle 28.00 X 84.00  Rotation 90
+    D23     Rectangle 61.00 X 66.00  Rotation 90
+    D24     Rectangle 61.00 X 86.00  Rotation 90
+    D25     Rectangle 46.00 X 54.00
+    D26     Round 84.74
+    D27     Round 92.00
+    D28     Round 139.86
+    D29     Rectangle 45.37 X 48.91
+    D72     Rectangle 76.00 X 132.00
+    D73     Round 66.00
+    D74     Rectangle 20.00 X 52.00  Rotation 90
+    D75     Rectangle 27.50 X 80.00  Rotation 90
+    D76     Rectangle 27.50 X 80.00
+    D77     Rectangle 61.00 X 86.00
+    D78     Rectangle 84.74 X 222.54  Rotation 90
+    D79     Square 69.00
+    D80     Square 81.00
+    D81     Round 81.00
+    D82     Rectangle 66.00 X 116.00
+    D83     Oval 66.00 X 116.00
+    D84     Round 76.00
+    D85     Round 54.00
+    D86     Round 62.00
+    D87     Round 38.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Top Copper.gbr
+
+    Layers:
+    ------------
+    Top Copper
+
+    D-Code  Shape  (thou)
+    ---------------------------------------------
+    D13     Round 10.00
+    D88     Round 157.48
+    D89     Round 70.00
+    D90     Rectangle 25.00 X 80.00
+    D91     Rectangle 71.00 X 122.00  Rotation 90
+    D92     Rectangle 55.00 X 60.00
+    D93     Square 60.00
+    D94     Round 60.00
+    D95     Rectangle 22.00 X 78.00  Rotation 90
+    D96     Rectangle 55.00 X 60.00  Rotation 90
+    D97     Rectangle 55.00 X 80.00  Rotation 90
+    D98     Rectangle 40.00 X 48.00
+    D99     Round 78.74
+    D100    Round 86.00
+    D101    Round 133.86
+    D102    Rectangle 39.37 X 42.91
+    D103    Rectangle 70.00 X 126.00
+    D104    Round 60.00
+    D105    Rectangle 14.00 X 46.00  Rotation 90
+    D106    Rectangle 21.50 X 74.00  Rotation 90
+    D107    Rectangle 21.50 X 74.00
+    D108    Rectangle 55.00 X 80.00
+    D109    Rectangle 78.74 X 216.54  Rotation 90
+    D110    Square 63.00
+    D111    Square 75.00
+    D112    Round 75.00
+    D113    Rectangle 60.00 X 110.00
+    D114    Oval 60.00 X 110.00
+    D115    Round 70.00
+    D116    Round 15.00
+    D117    Round 196.85
+    D118    Round 48.00
+    D119    Round 56.00
+    D120    Round 32.00
+    D121    Round 25.00
+    D122    Round 50.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Bottom Copper.gbr
+
+    Layers:
+    ---------------
+    Bottom Copper
+
+    D-Code  Shape  (thou)
+    --------------------------------
+    D10     Round 5.00
+    D13     Round 10.00
+    D88     Round 157.48
+    D89     Round 70.00
+    D93     Square 60.00
+    D94     Round 60.00
+    D99     Round 78.74
+    D100    Round 86.00
+    D101    Round 133.86
+    D104    Round 60.00
+    D111    Square 75.00
+    D112    Round 75.00
+    D113    Rectangle 60.00 X 110.00
+    D114    Oval 60.00 X 110.00
+    D115    Round 70.00
+    D116    Round 15.00
+    D118    Round 48.00
+    D119    Round 56.00
+    D120    Round 32.00
+    D121    Round 25.00
+    D122    Round 50.00
+    D123    Round 20.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Bottom Copper (Resist).gbr
+
+    Layers:
+    ---------------
+    Bottom Copper
+
+    D-Code  Shape  (thou)
+    --------------------------------
+    D124    Round 167.48
+    D125    Round 80.00
+    D126    Square 70.00
+    D127    Round 70.00
+    D128    Round 88.74
+    D129    Round 96.00
+    D130    Round 143.86
+    D131    Round 70.00
+    D132    Square 85.00
+    D133    Round 85.00
+    D134    Rectangle 70.00 X 120.00
+    D135    Oval 70.00 X 120.00
+    D136    Round 80.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Bottom Silkscreen.gbr
+
+    Layers:
+    -------------------
+    Bottom Silkscreen
+
+    D-Code  Shape  (thou)
+    ---------------------
+
+NC Drill Output
+===============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Drill Data - Through Hole.drl
+
+    Output:
+    --------------------------
+    Plated Round Drill Holes
+    Plated Slots
+    Plated Board Outlines
+
+    Tool   Size       Count    ID
+    -----------------------------
+    T001   00.016 in  6      M
+    T002   00.024 in  67     L
+    T003   00.032 in  29     I
+    T004   00.035 in  15     E
+    T005   00.039 in  4      K
+    T006   00.042 in  3      D
+    T007   00.050 in  6      J
+    T008   00.059 in  5      F
+    T009   00.062 in  4      G
+    T010   00.094 in  2      H
+    T011   00.138 in  3      B
+    -----------------------------
+    Total             144
+    -----------------------------
+    Tool   Size       Count    ID
+    -----------------------------
+    T001   00.025 in  1
+    T002   00.126 in  4      C
+    T003   00.138 in  1      A
+    -----------------------------
+    Total             6
+    -----------------------------
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Drill Ident Drawing - Through Hole.gbr
+
+    Layers:
+    ----------------
+    [Through Hole]
+
+
+Drill Ident Drawing
+===================
+
+    Drill  Plated  Size  Shape  ID
+    ------------------------------
+    138            100   Round  A
+    138    Y       100   Round  B
+    126            100   Round  C
+    42     Y       100   Round  D
+    35     Y       100   Round  E
+    59     Y       100   Round  F
+    62     Y       100   Round  G
+    94     Y       100   Round  H
+    32     Y       100   Round  I
+    50     Y       100   Round  J
+    39     Y       100   Round  K
+    24     Y       100   Round  L
+    16     Y       100   Round  M
+
+    D-Code  Shape  (thou)
+    ---------------------
+    D10     Round 5.00
+    D137    Round 100.00
+
+Gerber Output
+=============
+
+C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load - Board Outline.gbr
+
+    Layers:
+    ----------------
+    Board Outlines
+
+    D-Code  Shape  (thou)
+    ---------------------
+    D10     Round 5.00
+
+End Of Report.

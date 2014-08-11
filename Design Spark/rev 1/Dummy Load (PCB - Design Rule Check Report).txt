@@ -1,0 +1,82 @@
+Design Rule Check Report
+------------------------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load (PCB - Design Rule Check Report).txt
+Report Written : Thursday, December 12, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.pcb
+Design Title   : 
+Created        : 3/12/2013 9:34:27 PM
+Last Saved     : 12/12/2013 1:39:21 PM
+Editing Time   : 8773 min
+Units          : mm (precision 3)
+
+
+Results
+=======
+
+Gap in Net "GND" between (470.500,473.483) and (467.282,476.492) 
+    GND.
+Gap in Net "GND" between (467.282,476.492) and (459.620,476.498) 
+    GND.
+Gap in Net "GND" between (491.517,468.300) and (475.898,468.121) 
+    GND.
+Gap in Net "GND" between (493.000,474.082) and (492.117,472.792) 
+    GND.
+Gap in Net "GND" between (459.700,485.257) and (456.398,486.680) 
+    GND.
+Single pin net N0302 on U8.1 at 516.680,468.980
+Single pin net N0356 on U8.41 at 522.344,471.647
+Single pin net N0357 on U8.40 at 523.360,471.647
+Single pin net TX on U8.21 at 528.364,456.305
+Dangling Track from (505.900,474.300) to (506.100,474.200) on layer Bottom Copper
+Dangling Track from (518.100,450.600) to (517.800,450.600) on layer Bottom Copper
+Dangling Track from (477.000,446.100) to (477.000,447.000) on layer Bottom Copper
+
+Number of errors found : 12
+
+
+Settings
+========
+
+
+Spacings
+
+=========
+
+Tracks         Yes
+Pads and Vias  Yes
+Shapes         Yes
+Text           Yes
+Board          Yes
+Drills         Yes
+Components     Yes
+
+
+Manufacturing
+
+==============
+
+Drill Breakout                   No
+Drill Backoff                    No
+Silkscreen Overlap               No
+Copper Text In Board             No
+Min Track Width                  No
+Min Annular Ring                 No
+Min Paste Size                   No
+Vias In Pads                     No
+Unplated Vias                    No
+Unplated Pads With Inner Tracks  No
+
+
+Nets
+
+=====
+
+Net Completion                Yes
+Dangling Tracks               Yes
+Net Track Length Differences  No
+
+
+
+End Of Report.

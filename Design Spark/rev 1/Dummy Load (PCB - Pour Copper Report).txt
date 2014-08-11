@@ -1,0 +1,15 @@
+Pour Copper Report
+------------------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load (PCB - Pour Copper Report).txt
+Report Written : Thursday, December 12, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.pcb
+Design Title   : 
+Created        : 3/12/2013 9:34:27 PM
+Last Saved     : 12/12/2013 1:39:21 PM
+Editing Time   : 8773 min
+Units          : mm (precision 3)
+
+
+End Of Report.

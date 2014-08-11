@@ -1,0 +1,132 @@
+Back Annotation Results Report
+------------------------------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load (PCB - Back Annotation Results Report).txt
+Report Written : Tuesday, December 10, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.pcb
+Design Title   : 
+Created        : 3/12/2013 9:34:27 PM
+Last Saved     : 10/12/2013 9:40:39 PM
+Editing Time   : 6414 min
+Units          : mm (precision 3)
+
+Back Annotate renames from the PCB design to all Schematic designs in project "Dummy Load".
+
+Change Value on Component 'R1' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R2' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R2' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R3' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R3' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R4' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R4' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R5' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R5' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R6' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R6' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R7' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R7' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R8' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R8' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R9' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R9' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R10' - 'Tolerance'. - Dummy Load - Rev1.sch
+Change Value on Component 'R10' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R11' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R11' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R11' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R12' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R12' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R12' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R13' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R13' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R13' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R14' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R14' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R14' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C2' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R15' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R15' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R15' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R16' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R16' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C3' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C4' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R17' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R17' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R17' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R18' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R18' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R18' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C5' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C6' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C8' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C7' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C9' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C10' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R19' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R19' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R19' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R20' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R20' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R20' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R21' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R21' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R21' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R22' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R22' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R22' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C11' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C12' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C13' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C14' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R23' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R23' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R23' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R24' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R24' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R24' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'FS1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R25' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R25' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R25' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C15' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C16' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C17' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C18' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C19' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C20' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'C21' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R26' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R26' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R26' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED1' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED2' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED2' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED2' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED3' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED3' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'LED3' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R27' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R27' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R27' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R28' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R28' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R28' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R29' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R29' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R29' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R30' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R30' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R30' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R31' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R32' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R32' - 'Value'. - Dummy Load - Rev1.sch
+Change Value on Component 'R32' - 'Value'. - Dummy Load - Rev1.sch
+
+
+End Of Report.

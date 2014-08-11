@@ -1,0 +1,131 @@
+Back Annotation Renames Report
+------------------------------
+
+Report File    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load (PCB - Back Annotation Renames Report).txt
+Report Written : Tuesday, December 10, 2013
+Project Path   : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.prj
+Design Path    : C:\Users\Wiggins Desktop\Documents\Lee\Electronics\Dummy Load\Design Spark\Dummy Load.pcb
+Design Title   : 
+Created        : 3/12/2013 9:34:27 PM
+Last Saved     : 10/12/2013 9:40:39 PM
+Editing Time   : 6413 min
+Units          : mm (precision 3)
+
+Outstanding PCB renames awaiting back annotation to the Schematics design.
+
+Change Value on Component 'R1' - 'Tolerance'.
+Change Value on Component 'R1' - 'Value'.
+Change Value on Component 'R2' - 'Tolerance'.
+Change Value on Component 'R2' - 'Value'.
+Change Value on Component 'R3' - 'Tolerance'.
+Change Value on Component 'R3' - 'Value'.
+Change Value on Component 'R4' - 'Tolerance'.
+Change Value on Component 'R4' - 'Value'.
+Change Value on Component 'R5' - 'Tolerance'.
+Change Value on Component 'R5' - 'Value'.
+Change Value on Component 'R6' - 'Tolerance'.
+Change Value on Component 'R6' - 'Value'.
+Change Value on Component 'R7' - 'Tolerance'.
+Change Value on Component 'R7' - 'Value'.
+Change Value on Component 'R8' - 'Tolerance'.
+Change Value on Component 'R8' - 'Value'.
+Change Value on Component 'R9' - 'Tolerance'.
+Change Value on Component 'R9' - 'Value'.
+Change Value on Component 'R10' - 'Tolerance'.
+Change Value on Component 'R10' - 'Value'.
+Change Value on Component 'R11' - 'Value'.
+Change Value on Component 'R11' - 'Value'.
+Change Value on Component 'R11' - 'Value'.
+Change Value on Component 'R12' - 'Value'.
+Change Value on Component 'R12' - 'Value'.
+Change Value on Component 'R12' - 'Value'.
+Change Value on Component 'C1' - 'Value'.
+Change Value on Component 'R13' - 'Value'.
+Change Value on Component 'R13' - 'Value'.
+Change Value on Component 'R13' - 'Value'.
+Change Value on Component 'R14' - 'Value'.
+Change Value on Component 'R14' - 'Value'.
+Change Value on Component 'R14' - 'Value'.
+Change Value on Component 'C2' - 'Value'.
+Change Value on Component 'R15' - 'Value'.
+Change Value on Component 'R15' - 'Value'.
+Change Value on Component 'R15' - 'Value'.
+Change Value on Component 'R16' - 'Value'.
+Change Value on Component 'R16' - 'Value'.
+Change Value on Component 'C3' - 'Value'.
+Change Value on Component 'C4' - 'Value'.
+Change Value on Component 'R17' - 'Value'.
+Change Value on Component 'R17' - 'Value'.
+Change Value on Component 'R17' - 'Value'.
+Change Value on Component 'R18' - 'Value'.
+Change Value on Component 'R18' - 'Value'.
+Change Value on Component 'R18' - 'Value'.
+Change Value on Component 'C5' - 'Value'.
+Change Value on Component 'C6' - 'Value'.
+Change Value on Component 'C8' - 'Value'.
+Change Value on Component 'C7' - 'Value'.
+Change Value on Component 'C9' - 'Value'.
+Change Value on Component 'C10' - 'Value'.
+Change Value on Component 'R19' - 'Value'.
+Change Value on Component 'R19' - 'Value'.
+Change Value on Component 'R19' - 'Value'.
+Change Value on Component 'R20' - 'Value'.
+Change Value on Component 'R20' - 'Value'.
+Change Value on Component 'R20' - 'Value'.
+Change Value on Component 'R21' - 'Value'.
+Change Value on Component 'R21' - 'Value'.
+Change Value on Component 'R21' - 'Value'.
+Change Value on Component 'R22' - 'Value'.
+Change Value on Component 'R22' - 'Value'.
+Change Value on Component 'R22' - 'Value'.
+Change Value on Component 'C11' - 'Value'.
+Change Value on Component 'C12' - 'Value'.
+Change Value on Component 'C13' - 'Value'.
+Change Value on Component 'C14' - 'Value'.
+Change Value on Component 'R23' - 'Value'.
+Change Value on Component 'R23' - 'Value'.
+Change Value on Component 'R23' - 'Value'.
+Change Value on Component 'R24' - 'Value'.
+Change Value on Component 'R24' - 'Value'.
+Change Value on Component 'R24' - 'Value'.
+Change Value on Component 'FS1' - 'Value'.
+Change Value on Component 'R25' - 'Value'.
+Change Value on Component 'R25' - 'Value'.
+Change Value on Component 'R25' - 'Value'.
+Change Value on Component 'C15' - 'Value'.
+Change Value on Component 'C16' - 'Value'.
+Change Value on Component 'C17' - 'Value'.
+Change Value on Component 'C18' - 'Value'.
+Change Value on Component 'C19' - 'Value'.
+Change Value on Component 'C20' - 'Value'.
+Change Value on Component 'C21' - 'Value'.
+Change Value on Component 'R26' - 'Value'.
+Change Value on Component 'R26' - 'Value'.
+Change Value on Component 'R26' - 'Value'.
+Change Value on Component 'LED1' - 'Value'.
+Change Value on Component 'LED1' - 'Value'.
+Change Value on Component 'LED1' - 'Value'.
+Change Value on Component 'LED2' - 'Value'.
+Change Value on Component 'LED2' - 'Value'.
+Change Value on Component 'LED2' - 'Value'.
+Change Value on Component 'LED3' - 'Value'.
+Change Value on Component 'LED3' - 'Value'.
+Change Value on Component 'LED3' - 'Value'.
+Change Value on Component 'R27' - 'Value'.
+Change Value on Component 'R27' - 'Value'.
+Change Value on Component 'R27' - 'Value'.
+Change Value on Component 'R28' - 'Value'.
+Change Value on Component 'R28' - 'Value'.
+Change Value on Component 'R28' - 'Value'.
+Change Value on Component 'R29' - 'Value'.
+Change Value on Component 'R29' - 'Value'.
+Change Value on Component 'R29' - 'Value'.
+Change Value on Component 'R30' - 'Value'.
+Change Value on Component 'R30' - 'Value'.
+Change Value on Component 'R30' - 'Value'.
+Change Value on Component 'R31' - 'Value'.
+Change Value on Component 'R32' - 'Value'.
+Change Value on Component 'R32' - 'Value'.
+Change Value on Component 'R32' - 'Value'.
+
+End Of Report.
