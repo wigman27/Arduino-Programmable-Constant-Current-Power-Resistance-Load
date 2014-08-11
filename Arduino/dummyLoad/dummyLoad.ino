@@ -70,7 +70,7 @@ void timerIsr() {
 }
 
 // initialize the library with the numbers of the interface pins
-LiquidCrystal lcd(10, 12, 4, 13, 6, 5);  // ATMega32U4 Pins RS-30, E-26, D0-36, D1-37, D2-38, D3-39, D4-25, D5-32, D6-27, D7-31.
+LiquidCrystal lcd(10, 12, 4, 13, 6, 5);  // ATMega32U4 Pins RS-30, E-26, D4-25, D5-32, D6-27, D7-31.
 
 // Start setup function:
 void setup() {
@@ -232,7 +232,7 @@ void setFanSpeed () {
   }
 }
 
-// Function to allow the display to update every 0.25 seconds.
+// Function to allow the display to update every 0.5 seconds.
 boolean updateDisplay() {
   unsigned long now = millis();
   if (now - timeSinceLastDisplay >= 500) {
@@ -248,7 +248,14 @@ void setMode(int menuMode) {
    mode = menuMode;
 }
 
-//Function to update the LCD. Accepts the LCD display variable to set to values or menu.
+/*
+Function to update the LCD. Accepts the LCD display variable to set to values or menu.
+This determines what is on the LCD, case 0 means it is in mormal mode and displays the values that everyting is set to
+it also includes a less than symbol to show what mode it is in on the screen. In this mode it tests if 500ms has passed,
+if so, it clears the LCD and updates all the values. If you press the button on the encoder it will activate the showmenu
+function further down which will update the displaytype so it will then equal displayMenu, which equals a const int of 1, as set above
+it will then satisfy case 1 below and update the LCD to the menu functions.
+*/
 void updateLCD(int displayType) {  
   switch (displayType) {
     case 0:
@@ -315,7 +322,13 @@ void updateLCD(int displayType) {
   }
 }
 
-// This function is called when the encoder button is pressed. It either displays the menu or makes a selection from the menu.
+/*
+This function is called when the encoder button is pressed. 
+If the LCD is not displaying the menu, it must mean that we want the menu, so it changes the lcdDisplay to
+display the menu, if we are in the menu it must mean that we want to select that mode, it then changes the mode,
+and redisplays the values.
+
+*/
 void showMenu() {
   if(lcdDisplay != displayMenu) {
   lcdDisplay = displayMenu;
@@ -384,10 +397,3 @@ void setDac(int value, int channel) {
   digitalWrite(dacChipSelectPin,HIGH);// take the Chip Select pin high to de-select the DAC:
   interrupts(); // Enable interupts
 }
-
-
-
-
-
-
-
