@@ -1,9 +1,17 @@
 /*
+Version Control
+
+1.00
+Initial upload
+
+1.10
+* Fixed an error in the set current function of the DAC
+* Added improved current calculation to allow for correction in OP-AMP offset, uses the measured value to adjust the set current.
+* General code tidy up
 
 To - Dos
 * Improve push button functions to allow the encode to set the individual values ie. 10s, 1s, 0.s, 0.1s, 0.01s and 0.001s
 * Display in engineering units, ie. mA and mW.
-* Error correction to allow diferences in actual current to input current.
 * Add PWM control to LCD backlight.
 
 */
@@ -35,14 +43,17 @@ const int ledBacklight = 11;         //LCD Backlight
 const int displayValues = 0;         // Constant used for the LCD to display the values
 const int displayMenu = 1;           // Constant used for the LCD to display the menu
 
+
 // Modes of operations
 const int currentMode = 0;           // Represents the constant current mode
 const int resistanceMode = 1;        // Represents the constant resistance mode
 const int powerMode = 2;             // Represents the constant power mode
 
 // Set integres for maximum values.
-const int maximumCurrent = 8;
-const int maximumPower = 50;
+const int maximumCurrent = 8;        // Maximum Value of load current
+const int maximumPower = 50;         // Maximum power dissipated
+
+const float softwareVersion = 1.1;   // used for the current software version
 
 // Set Integers
 int encoderOldPos = -1;              // variable to store the old encoder position.
@@ -54,9 +65,11 @@ int mode = 0;                        // variable to store the mode the unit is i
 // Set Floats
 float inputVoltage = 0;              // Float that stores the input voltage.
 float measuredCurrent = 0;           // Float that stores the measured current through the sustem.
+float roundedMeasuredCurrent = 0;    // Used to round the float values to minamise DAC communications.
 float setCurrent = 0;                // Float that stores the current sent to the DAC.
 float setResistance = 0;             // Float that stores the calculated system resistance.
 float setPower = 0;                  // Float that stores the calculated system power.
+float adjustedCurrent =0;
 
 // Used to refresh LCD display.
 unsigned long timeSinceLastDisplay = 0;
@@ -103,8 +116,10 @@ void setup() {
   // Print a message to the LCD.
   lcd.setCursor(5, 1);
   lcd.print("Dummy Load");
-  lcd.setCursor(6, 2);
-  lcd.print("Version 1"); 
+  lcd.setCursor(4, 2);
+  lcd.print("Version ");
+  lcd.print(softwareVersion);
+  delay(1000); 
   Serial.begin(9600);  
 } // End setup function.
 
@@ -132,12 +147,15 @@ void loop() {
 // Function to read the input voltage and return a float number represention volts.
 float readInputVoltage() {
   inputVoltage = (readAdc(adcInputVoltage)) * 12.03;
+  if (inputVoltage < 0.018) {
+    inputVoltage = 0;
+  }  
   return inputVoltage;
 }
 
 // Function to measure the actual load current.
 float readMeasuredCurrent() {
-   measuredCurrent = (readAdc(adcMeasuredCurrent)) / 0.1;
+   measuredCurrent = (readAdc(adcMeasuredCurrent)) / 0.1000;
 }
 
 //Function to calculate and set the required load current. Accepts the mode variable to determine if the constant current, resistance or power mode is to be used.
@@ -194,10 +212,21 @@ void setLoadCurrent (int setMode) {
       break;    
     }
   }
-  // Convert the set current into an integer to be sent to the DAC
-  int dacCurrent = setCurrent / .002;  
-  // Send the value to the DAC. 
-  setDac(dacCurrent,dacCurrentSet);
+  // Convert the set current into an voltage to be sent to the DAC
+  measuredCurrent = readMeasuredCurrent();
+  // To ensure we are not dividing by 0.
+  if(measuredCurrent != 0) {
+  adjustedCurrent = (setCurrent / measuredCurrent) * setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
+  } else {
+    adjustedCurrent = setCurrent;
+  }  
+  roundedMeasuredCurrent = round(measuredCurrent * 1000) / 1000.000; // This the best way I can think of rounding a floating point number to 3 decimal places.
+  //only adjust the current of the set and meausred currents are diferent.  
+  if (roundedMeasuredCurrent != setCurrent) {
+  int dacCurrent = ((adjustedCurrent * 0.1 * 2.5)/2.048) * 4096;  
+  // Send the value to the DAC.  
+  setDac(dacCurrent,dacCurrentSet);  
+  }
 }
 
 // Function to read heat sink temp
