@@ -4,6 +4,7 @@ Arduino-Programmable-Constant-Current-Power-Resistance-Load
 This is all of the code, datasheets and design files for [my instructable](http://www.instructables.com/id/Arduino-Programmable-Constant-Current-Power-Resist/ "Arduino Programmable Constant Current Power Resistance Load") 
 
 I also have boards available for sale on [Tindie](https://www.tindie.com/products/Wigman27/pcb-for-arduino-programmable-constant-current-power-resistance-load/) for $10 each
+<a href="https://www.tindie.com/stores/Wigman27/?ref=offsite_badges&utm_source=sellers_Wigman27&utm_medium=badges&utm_campaign=badge_medium"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-mediums.png" alt="I sell on Tindie" width="150" height="78"></a>
 
 * Arduino - It contains the Arduino code that we will be talking about here, within the dummy load folder. It also contains all of the 3rd party libraries I have used.
 * Datasheets - It contains all of the datasheets for the major components used within the project.
