@@ -59,7 +59,7 @@ const int k_powerMode = 2;             // Represents the constant power mode
 const int k_maximumCurrent = 8;        // Maximum Value of load current
 const int k_maximumPower = 50;         // Maximum power dissipated
 
-const float k_softwareVersion = 1.1;   // used for the current software version
+const float k_softwareVersion = 1.11;   // used for the current software version
 
 // Set Integers
 int g_encoderOldPos = -1;              // variable to store the old encoder position.
