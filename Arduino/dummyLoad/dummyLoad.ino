@@ -9,6 +9,12 @@ Initial upload
 * Added improved current calculation to allow for correction in OP-AMP offset, uses the measured value to adjust the set current.
 * General code tidy up
 
+1.11
+* Added prefixes to constants and gobal variables
+* fixed adjusted current percentage calculation
+* renamed DAC variables cleaned up equation
+
+
 To - Dos
 * Improve push button functions to allow the encode to set the individual values ie. 10s, 1s, 0.s, 0.1s, 0.01s and 0.001s
 * Display in engineering units, ie. mA and mW.
@@ -223,9 +229,14 @@ void setLoadCurrent (int setMode) {
   g_roundedMeasuredCurrent = round(g_measuredCurrent * 1000) / 1000.000; // This the best way I can think of rounding a floating point number to 3 decimal places.
   //only adjust the current of the set and meausred currents are diferent.  
   if (g_roundedMeasuredCurrent != g_setCurrent) {
-  int dacCurrent = ((g_adjustedCurrent * 0.1 * 2.5)/2.048) * 4096;  
+  float senseResistor = 0.1;
+  float voltageRatio = 2.5;
+  float voltageReference = 2.048;
+  int dacResolution = 4096;
+  
+  int dacVoltage = ((g_adjustedCurrent * senseResistor * voltageRatio)/voltageReference) * dacResolution;  
   // Send the value to the DAC.  
-  setDac(dacCurrent,k_dacCurrentSet);  
+  setDac(dacVoltage,k_dacCurrentSet);  
   }
 }
 
