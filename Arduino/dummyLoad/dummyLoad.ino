@@ -14,6 +14,8 @@ Initial upload
 * fixed adjusted current percentage calculation
 * renamed DAC variables cleaned up equation
 
+1.12
+* foxed adjusted current percentage calucaltion ... again
 
 To - Dos
 * Improve push button functions to allow the encode to set the individual values ie. 10s, 1s, 0.s, 0.1s, 0.01s and 0.001s
@@ -59,7 +61,7 @@ const int k_powerMode = 2;             // Represents the constant power mode
 const int k_maximumCurrent = 8;        // Maximum Value of load current
 const int k_maximumPower = 50;         // Maximum power dissipated
 
-const float k_softwareVersion = 1.11;   // used for the current software version
+const float k_softwareVersion = 1.12;   // used for the current software version
 
 // Set Integers
 int g_encoderOldPos = -1;              // variable to store the old encoder position.
@@ -222,7 +224,7 @@ void setLoadCurrent (int setMode) {
   g_measuredCurrent = readMeasuredCurrent();
   // To ensure we are not dividing by 0.
   if(measuredCurrent != 0) {
-  g_adjustedCurrent = (g_setCurrent - g_measuredCurrent) * g_setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
+  g_adjustedCurrent = (abs(g_setCurrent - g_measuredCurrent) / g_setCurrent) * 100.0; // Turn the current error between set and measured into a percentage so it can be adjusted
   } else {
     g_adjustedCurrent = g_setCurrent;
   }  
