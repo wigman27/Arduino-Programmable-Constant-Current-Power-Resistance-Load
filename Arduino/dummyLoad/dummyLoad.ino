@@ -41,6 +41,11 @@ const int k_dacChipSelectPin = 9;      // set pin 9 as the chip select for the D
 const int k_dacCurrentSet = 0;         // set The DAC channel that sets the constant current.
 const int k_dacFanSet = 1;             // set The DAC channel that sets the fan speed.
 
+const float k_senseResistor = 0.1;
+const float k_voltageRatio = 2.5;
+const float k_voltageReference = 2.048;
+const int k_dacResolution = 4096;
+
 const int k_encoderA = 3;              // set pin 3 as the channel A for encoder 1, int.0:
 const int k_encoderB = 2;              // set pin 2 as the channel B for encoder 1, int.1:
 const int k_encoderPBPin = 0;          // set pin 0 as the push button for encoder 1
@@ -141,7 +146,7 @@ void loop() {
      encoderMoved = false;
   }  
   // Reads input voltags from the load source. ****MAXIMUM 24V INPUT**** 
-  g_inputVoltage = readInputVoltage();
+  readInputVoltage();
   // Calculates and sets required load current. Accepts the mode variable which defines the mode of the unit, ie. Constant current, resistance or power.  
   setLoadCurrent(g_mode);
   // Calculates heatsink temprature and sets fan speed accordingly.  
@@ -158,12 +163,11 @@ float readInputVoltage() {
   if (g_inputVoltage < 0.018) {
     g_inputVoltage = 0;
   }  
-  return g_inputVoltage;
 }
 
 // Function to measure the actual load current.
 float readMeasuredCurrent() {
-   measuredCurrent = (readAdc(k_adcMeasuredCurrent)) / 0.1000;
+   g_measuredCurrent = (readAdc(k_adcMeasuredCurrent)) / 0.1000;
 }
 
 //Function to calculate and set the required load current. Accepts the mode variable to determine if the constant current, resistance or power mode is to be used.
@@ -220,25 +224,20 @@ void setLoadCurrent (int setMode) {
       break;    
     }
   }
-  // Convert the set current into an voltage to be sent to the DAC
-  g_measuredCurrent = readMeasuredCurrent();
+  // Convert the set current into a voltage to be sent to the DAC
+  readMeasuredCurrent();
   // To ensure we are not dividing by 0.
-  if(measuredCurrent != 0) {
-  g_adjustedCurrent = (abs(g_setCurrent - g_measuredCurrent) / g_setCurrent) * 100.0; // Turn the current error between set and measured into a percentage so it can be adjusted
+  if(g_measuredCurrent != 0) {
+    g_adjustedCurrent = (g_setCurrent / g_measuredCurrent) * g_setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
   } else {
     g_adjustedCurrent = g_setCurrent;
   }  
-  g_roundedMeasuredCurrent = round(g_measuredCurrent * 1000) / 1000.000; // This the best way I can think of rounding a floating point number to 3 decimal places.
+  g_roundedMeasuredCurrent = roundFloat(g_measuredCurrent, 3); 
   //only adjust the current of the set and meausred currents are diferent.  
   if (g_roundedMeasuredCurrent != g_setCurrent) {
-  float senseResistor = 0.1;
-  float voltageRatio = 2.5;
-  float voltageReference = 2.048;
-  int dacResolution = 4096;
-  
-  int dacVoltage = ((g_adjustedCurrent * senseResistor * voltageRatio)/voltageReference) * dacResolution;  
-  // Send the value to the DAC.  
-  setDac(dacVoltage,k_dacCurrentSet);  
+    int dacCurrent = ((g_adjustedCurrent * k_senseResistor * k_voltageRatio) / k_voltageReference) * k_dacResolution;  
+    // Send the value to the DAC.  
+    setDac(dacCurrent,k_dacCurrentSet);  
   }
 }
 
@@ -305,12 +304,12 @@ void updateLCD(int displayType) {
         lcd.clear();
         lcd.print("Voltage =");
         lcd.setCursor(10,0);
-        lcd.print(inputVoltage,3);
+        lcd.print(g_inputVoltage,3);
         lcd.print("V");        
         lcd.setCursor(0,1);
         lcd.print("Current =");
         lcd.setCursor(10,1);
-        lcd.print(setCurrent,3);
+        lcd.print(g_setCurrent,3);
         lcd.print("A");
         if (g_mode == k_currentMode) {
           lcd.setCursor(19,1);
@@ -319,7 +318,7 @@ void updateLCD(int displayType) {
         lcd.setCursor(0,2);
         lcd.print("Resist. =");
         lcd.setCursor(10,2);
-        lcd.print(setResistance,3);
+        lcd.print(g_setResistance,3);
         lcd.print(char(0xF4));
         if (g_mode == k_resistanceMode) {
           lcd.setCursor(19,2);
@@ -328,7 +327,7 @@ void updateLCD(int displayType) {
         lcd.setCursor(0,3);
         lcd.print("Power   =");
         lcd.setCursor(10,3);
-        lcd.print(setPower,3);
+        lcd.print(g_setPower,3);
         lcd.print("W");
         if (g_mode == k_powerMode) {
           lcd.setCursor(19,3);
@@ -438,4 +437,10 @@ void setDac(int value, int channel) {
   SPI.transfer(dacSecondaryByte);// send in the Secondary Byte
   digitalWrite(k_dacChipSelectPin,HIGH);// take the Chip Select pin high to de-select the DAC:
   interrupts(); // Enable interupts
+}
+
+// This the best way I can think of rounding a floating point number to X decimal places.
+float roundFloat(float number, int decimals) {
+  float rounded_float = round(number * pow(10, decimals)) / pow(10, decimals);
+  return rounded_float; 
 }
