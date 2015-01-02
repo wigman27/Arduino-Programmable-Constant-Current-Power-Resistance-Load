@@ -11,11 +11,8 @@ Initial upload
 
 1.11
 * Added prefixes to constants and gobal variables
-* fixed adjusted current percentage calculation
-* renamed DAC variables cleaned up equation
+* added named constants to DAC equation
 
-1.12
-* foxed adjusted current percentage calucaltion ... again
 
 To - Dos
 * Improve push button functions to allow the encode to set the individual values ie. 10s, 1s, 0.s, 0.1s, 0.01s and 0.001s
@@ -66,7 +63,7 @@ const int k_powerMode = 2;             // Represents the constant power mode
 const int k_maximumCurrent = 8;        // Maximum Value of load current
 const int k_maximumPower = 50;         // Maximum power dissipated
 
-const float k_softwareVersion = 1.12;   // used for the current software version
+const float k_softwareVersion = 1.11;   // used for the current software version
 
 // Set Integers
 int g_encoderOldPos = -1;              // variable to store the old encoder position.
