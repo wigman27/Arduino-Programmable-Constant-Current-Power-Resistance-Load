@@ -12,7 +12,7 @@ Initial upload
 1.11
 * Added prefixes to constants and gobal variables
 * added named constants to DAC equation
-
+* added the roundFloat function
 
 To - Dos
 * Improve push button functions to allow the encode to set the individual values ie. 10s, 1s, 0.s, 0.1s, 0.01s and 0.001s
