@@ -34,7 +34,6 @@ const int k_adcMeasuredCurrent = 1;    // set the ADC channel that reads the inp
 const int k_adcTempSense1 = 2;         // set the ADC channel that reads the temprature sensor 1 under the heatsink.
 const int k_adcTempSense2 = 3;         // set the ADC channel that reads the temprature sensor 2 under the heatsink.
 
-const float k_DacProportionalGain = 10;
 
 const int k_dacChipSelectPin = 9;      // set pin 9 as the chip select for the DAC:
 const int k_dacCurrentSet = 0;         // set The DAC channel that sets the constant current.
@@ -82,7 +81,6 @@ float g_setCurrent = 0;                // Float that stores the current sent to 
 float g_setResistance = 0;             // Float that stores the calculated system resistance.
 float g_setPower = 0;                  // Float that stores the calculated system power.
 float g_adjustedCurrent =0;
-float g_currentError = 0;
 
 // Used to refresh LCD display.
 unsigned long g_timeSinceLastDisplay = 0;
@@ -228,12 +226,7 @@ void setLoadCurrent (int setMode) {
   readMeasuredCurrent();
   // To ensure we are not dividing by 0.
   if(g_measuredCurrent != 0) {
-
-    g_currentError = g_setCurrent - g_roundedMeasuredCurrent;
-    g_adjustedCurrent = k_DacProportionalGain * g_currentError + g_setCurrent;
-    if (g_adjustedCurrent < 0) g_adjustedCurrent = 0;
-    
-    
+    adjustedCurrent = (setCurrent / measuredCurrent) * setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
   } else {
     g_adjustedCurrent = g_setCurrent;
   }  
