@@ -226,7 +226,7 @@ void setLoadCurrent (int setMode) {
   readMeasuredCurrent();
   // To ensure we are not dividing by 0.
   if(g_measuredCurrent != 0) {
-    adjustedCurrent = (setCurrent / measuredCurrent) * setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
+    g_adjustedCurrent = (g_setCurrent / g_measuredCurrent) * g_setCurrent; // Turn the current error between set and measured into a percentage so it can be adjusted
   } else {
     g_adjustedCurrent = g_setCurrent;
   }  
