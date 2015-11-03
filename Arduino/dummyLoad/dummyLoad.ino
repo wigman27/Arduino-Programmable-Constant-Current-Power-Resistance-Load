@@ -21,6 +21,10 @@ To - Dos
 
 */
 
+//Please select your language
+#define ENGLISH
+//#define GERMAN
+
 // include the library code:
 #include <LiquidCrystal.h>
 #include <SPI.h>
@@ -54,6 +58,28 @@ const int k_ledBacklight = 11;         //LCD Backlight
 const int k_displayValues = 0;         // Constant used for the LCD to display the values
 const int k_displayMenu = 1;           // Constant used for the LCD to display the menu
 
+//Languages
+#ifdef ENGLISH
+  char* language_name="Dummy Load";
+  char* language_version="Version ";
+  char* language_voltage="Voltage";
+  char* language_current="Current";
+  char* language_resistance="Resistance";
+  char* language_power="Power";
+  char* language_mode="Please Select Mode";
+  char* language_cancel="Cancel";
+#endif
+
+#ifdef GERMAN
+  char* language_name="Elekronische Last";
+  char* language_version="Version ";
+  char* language_voltage="Spannung";
+  char* language_current="Strom";
+  char* language_resistance="Widerstand";
+  char* language_power="Leistung";
+  char* language_mode="Bitte Modus wählen";
+  char* language_cancel="Abbrechen";
+#endif
 
 // Modes of operations
 const int k_currentMode = 0;           // Represents the constant current mode
@@ -126,9 +152,9 @@ void setup() {
   lcd.begin(20, 4);
   // Print a message to the LCD.
   lcd.setCursor(5, 1);
-  lcd.print("Dummy Load");
+  lcd.print(language_name);
   lcd.setCursor(4, 2);
-  lcd.print("Version ");
+  lcd.print(language_version);
   lcd.print(k_softwareVersion);
   delay(1000); 
   Serial.begin(9600);  
@@ -300,12 +326,12 @@ void updateLCD(int displayType) {
     case 0:
       if (updateDisplay()) {
         lcd.clear();
-        lcd.print("Voltage =");
+        lcd.print(strcat(language_voltage," ="));
         lcd.setCursor(10,0);
         lcd.print(g_inputVoltage,3);
         lcd.print("V");        
         lcd.setCursor(0,1);
-        lcd.print("Current =");
+        lcd.print(strcat(language_current," ="));
         lcd.setCursor(10,1);
         lcd.print(g_setCurrent,3);
         lcd.print("A");
@@ -314,7 +340,7 @@ void updateLCD(int displayType) {
           lcd.print("<");
         }
         lcd.setCursor(0,2);
-        lcd.print("Resist. =");
+        lcd.print(strcat(language_resistance," ="));
         lcd.setCursor(10,2);
         lcd.print(g_setResistance,3);
         lcd.print(char(0xF4));
@@ -323,7 +349,7 @@ void updateLCD(int displayType) {
           lcd.print("<");
         }
         lcd.setCursor(0,3);
-        lcd.print("Power   =");
+        lcd.print(strcat(language_power," ="));
         lcd.setCursor(10,3);
         lcd.print(g_setPower,3);
         lcd.print("W");
@@ -340,20 +366,20 @@ void updateLCD(int displayType) {
       if (encoderMoved || updateDisplay()) {
         lcd.clear();
         lcd.setCursor(1,0);
-        lcd.print("Please Select Mode");     
+        lcd.print(language_mode);     
         lcd.setCursor(2,2);
         switch (g_encoderPos) {
           case 0:
-            lcd.print("Current");
+            lcd.print(language_current);
           break;
           case 1:
-            lcd.print("Resistance");
+            lcd.print(language_resistance);
           break;
           case 2:
-            lcd.print("Power");
+            lcd.print(language_power);
           break;
           case 3:
-            lcd.print("Cancel");
+            lcd.print(language_cancel);
           break;
         }
       }
