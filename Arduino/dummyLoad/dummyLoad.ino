@@ -122,64 +122,49 @@ void timerIsr() {
 // initialize the library with the numbers of the interface pins
 LiquidCrystal lcd(10, 12, 4, 13, 6, 5);  // ATMega32U4 Pins RS-30, E-26, D4-25, D5-32, D6-27, D7-31.
 
-// Start setup function:
-void setup() {
-  // attach interrupts:
-  attachInterrupt(2, showMenu, FALLING);    //Sets encoder button interrupt on transition from high to low.
-  // set outputs:
-  pinMode (k_adcChipSelectPin, OUTPUT);
-  pinMode (k_dacChipSelectPin, OUTPUT);
-  pinMode (k_ledBacklight, OUTPUT);
-  // set inputs:
-  pinMode(k_encoderA, INPUT); 
-  pinMode(k_encoderB, INPUT);
-  // set the ChipSelectPins high initially:
-  digitalWrite(k_adcChipSelectPin, HIGH);
-  digitalWrite(k_dacChipSelectPin, HIGH);
-  // set the LCD Backlight high
-  digitalWrite(k_ledBacklight, HIGH);
-  // initialise SPI:
-  SPI.begin();
-  SPI.setBitOrder(MSBFIRST);         // Not strictly needed but just to be sure.
-  SPI.setDataMode(SPI_MODE0);        // Not strictly needed but just to be sure.
-  // Set SPI clock divider to 16, therfore a 1 MhZ signal due to the maximum frequency of the ADC.
-  SPI.setClockDivider(SPI_CLOCK_DIV16);
-  //initialise encoder and associated timers:
-  encoder = new ClickEncoder(k_encoderA, k_encoderB, k_encoderPBPin);
-  Timer1.initialize(1000);
-  Timer1.attachInterrupt(timerIsr);
-  // set up the LCD's number of columns and rows: 
-  lcd.begin(20, 4);
-  // Print a message to the LCD.
-  lcd.setCursor(5, 1);
-  lcd.print(language_name);
-  lcd.setCursor(4, 2);
-  lcd.print(language_version);
-  lcd.print(k_softwareVersion);
-  delay(1000); 
-  Serial.begin(9600);  
-} // End setup function.
-
-// Start loop function:
-void loop() {  
-  g_encoderPos += encoder->getValue();
-  if (g_encoderPos != g_encoderOldPos) {
-    encoderMoved = true;
-    g_encoderOldPos = g_encoderPos;
-  } else {
-     encoderMoved = false;
-  }  
-  // Reads input voltags from the load source. ****MAXIMUM 24V INPUT**** 
-  readInputVoltage();
-  // Calculates and sets required load current. Accepts the mode variable which defines the mode of the unit, ie. Constant current, resistance or power.  
-  setLoadCurrent(g_mode);
-  // Calculates heatsink temprature and sets fan speed accordingly.  
-  setFanSpeed();
-  // Updates the LCD display. Accepts the lcdDisplay variable which defines if the values or menu is to be displayed.
-  updateLCD(g_lcdDisplay); 
-}// End of loop function.
-
 // Start of custom functions:
+
+// Function to set the DAC, Accepts the Value to be sent and the cannel of the DAC to be used.
+void setDac(int value, int channel) {
+  byte dacRegister = 0b00110000; // Sets default DAC registers B00110000, 1st bit choses DAC, A=0 B=1, 2nd Bit bypasses input Buffer, 3rd bit sets output gain to 1x, 4th bit controls active low shutdown. LSB are insignifigant here.
+  int dacSecondaryByteMask = 0xFF; // Isolates the last 8 bits of the 12 bit value, B0000000011111111.
+  byte dacPrimaryByte = (value >> 8) | dacRegister; //Value is a maximum 12 Bit value, it is shifted to the right by 8 bytes to get the first 4 MSB out of the value for entry into th Primary Byte, then ORed with the dacRegister  
+  byte dacSecondaryByte = value & dacSecondaryByteMask; // compares the 12 bit value to isolate the 8 LSB and reduce it to a single byte. 
+  // Sets the MSB in the primaryByte to determine the DAC to be set, DAC A=0, DAC B=1
+  switch (channel) {
+   case 0:
+     dacPrimaryByte &= ~(1 << 7);     
+   break;
+   case 1:
+     dacPrimaryByte |= (1 << 7);  
+  }
+  noInterrupts(); // disable interupts to prepare to send data to the DAC
+  digitalWrite(k_dacChipSelectPin,LOW); // take the Chip Select pin low to select the DAC:
+  SPI.transfer(dacPrimaryByte); //  send in the Primary Byte:
+  SPI.transfer(dacSecondaryByte);// send in the Secondary Byte
+  digitalWrite(k_dacChipSelectPin,HIGH);// take the Chip Select pin high to de-select the DAC:
+  interrupts(); // Enable interupts
+}
+
+//Function to read the ADC, accepts the channel to be read.
+float readAdc(int channel) {
+  byte adcPrimaryRegister = 0b00000110;      // Sets default Primary ADC Address register B00000110, This is a default address setting, the third LSB is set to one to start the ADC, the second LSB is to set the ADC to single ended mode, the LSB is for D2 address bit, for this ADC its a "Don't Care" bit.
+  byte adcPrimaryRegisterMask = 0b00000111;  // b00000111 Isolates the three LSB. 
+  byte adcPrimaryConfig = adcPrimaryRegister & adcPrimaryRegisterMask; // ensures the adc register is limited to the mask and assembles the configuration byte to send to ADC.
+  byte adcSecondaryConfig = channel << 6;
+  noInterrupts(); // disable interupts to prepare to send address data to the ADC.  
+  digitalWrite(k_adcChipSelectPin,LOW); // take the Chip Select pin low to select the ADC.
+  SPI.transfer(adcPrimaryConfig); //  send in the primary configuration address byte to the ADC.  
+  byte adcPrimaryByte = SPI.transfer(adcSecondaryConfig); // read the primary byte, also sending in the secondary address byte.  
+  byte adcSecondaryByte = SPI.transfer(0x00); // read the secondary byte, also sending 0 as this doesn't matter. 
+  digitalWrite(k_adcChipSelectPin,HIGH); // take the Chip Select pin high to de-select the ADC.
+  interrupts(); // Enable interupts.
+  byte adcPrimaryByteMask = 0b00001111;      // b00001111 isolates the 4 LSB for the value returned. 
+  adcPrimaryByte &= adcPrimaryByteMask; // Limits the value of the primary byte to the 4 LSB:
+  int digitalValue = (adcPrimaryByte << 8) | adcSecondaryByte; // Shifts the 4 LSB of the primary byte to become the 4 MSB of the 12 bit digital value, this is then ORed to the secondary byte value that holds the 8 LSB of the digital value.
+  float value = (float(digitalValue) * 2.048) / 4096.000; // The digital value is converted to an analogue voltage using a VREF of 2.048V.
+  return value; // Returns the value from the function
+}
 
 // Function to read the input voltage and return a float number represention volts.
 float readInputVoltage() {
@@ -192,6 +177,12 @@ float readInputVoltage() {
 // Function to measure the actual load current.
 float readMeasuredCurrent() {
    g_measuredCurrent = (readAdc(k_adcMeasuredCurrent)) / 0.1000;
+}
+
+// This the best way I can think of rounding a floating point number to X decimal places.
+float roundFloat(float number, int decimals) {
+  float rounded_float = round(number * pow(10, decimals)) / pow(10, decimals);
+  return rounded_float; 
 }
 
 //Function to calculate and set the required load current. Accepts the mode variable to determine if the constant current, resistance or power mode is to be used.
@@ -421,50 +412,59 @@ void showMenu() {
   }
 }
 
-//Function to read the ADC, accepts the channel to be read.
-float readAdc(int channel) {
-  byte adcPrimaryRegister = 0b00000110;      // Sets default Primary ADC Address register B00000110, This is a default address setting, the third LSB is set to one to start the ADC, the second LSB is to set the ADC to single ended mode, the LSB is for D2 address bit, for this ADC its a "Don't Care" bit.
-  byte adcPrimaryRegisterMask = 0b00000111;  // b00000111 Isolates the three LSB. 
-  byte adcPrimaryConfig = adcPrimaryRegister & adcPrimaryRegisterMask; // ensures the adc register is limited to the mask and assembles the configuration byte to send to ADC.
-  byte adcSecondaryConfig = channel << 6;
-  noInterrupts(); // disable interupts to prepare to send address data to the ADC.  
-  digitalWrite(k_adcChipSelectPin,LOW); // take the Chip Select pin low to select the ADC.
-  SPI.transfer(adcPrimaryConfig); //  send in the primary configuration address byte to the ADC.  
-  byte adcPrimaryByte = SPI.transfer(adcSecondaryConfig); // read the primary byte, also sending in the secondary address byte.  
-  byte adcSecondaryByte = SPI.transfer(0x00); // read the secondary byte, also sending 0 as this doesn't matter. 
-  digitalWrite(k_adcChipSelectPin,HIGH); // take the Chip Select pin high to de-select the ADC.
-  interrupts(); // Enable interupts.
-  byte adcPrimaryByteMask = 0b00001111;      // b00001111 isolates the 4 LSB for the value returned. 
-  adcPrimaryByte &= adcPrimaryByteMask; // Limits the value of the primary byte to the 4 LSB:
-  int digitalValue = (adcPrimaryByte << 8) | adcSecondaryByte; // Shifts the 4 LSB of the primary byte to become the 4 MSB of the 12 bit digital value, this is then ORed to the secondary byte value that holds the 8 LSB of the digital value.
-  float value = (float(digitalValue) * 2.048) / 4096.000; // The digital value is converted to an analogue voltage using a VREF of 2.048V.
-  return value; // Returns the value from the function
-}
+// Start setup function:
+void setup() {
+  // attach interrupts:
+  attachInterrupt(2, showMenu, FALLING);    //Sets encoder button interrupt on transition from high to low.
+  // set outputs:
+  pinMode (k_adcChipSelectPin, OUTPUT);
+  pinMode (k_dacChipSelectPin, OUTPUT);
+  pinMode (k_ledBacklight, OUTPUT);
+  // set inputs:
+  pinMode(k_encoderA, INPUT); 
+  pinMode(k_encoderB, INPUT);
+  // set the ChipSelectPins high initially:
+  digitalWrite(k_adcChipSelectPin, HIGH);
+  digitalWrite(k_dacChipSelectPin, HIGH);
+  // set the LCD Backlight high
+  digitalWrite(k_ledBacklight, HIGH);
+  // initialise SPI:
+  SPI.begin();
+  SPI.setBitOrder(MSBFIRST);         // Not strictly needed but just to be sure.
+  SPI.setDataMode(SPI_MODE0);        // Not strictly needed but just to be sure.
+  // Set SPI clock divider to 16, therfore a 1 MhZ signal due to the maximum frequency of the ADC.
+  SPI.setClockDivider(SPI_CLOCK_DIV16);
+  //initialise encoder and associated timers:
+  encoder = new ClickEncoder(k_encoderA, k_encoderB, k_encoderPBPin);
+  Timer1.initialize(1000);
+  Timer1.attachInterrupt(timerIsr);
+  // set up the LCD's number of columns and rows: 
+  lcd.begin(20, 4);
+  // Print a message to the LCD.
+  lcd.setCursor(5, 1);
+  lcd.print(language_name);
+  lcd.setCursor(4, 2);
+  lcd.print(language_version);
+  lcd.print(k_softwareVersion);
+  delay(1000); 
+  Serial.begin(9600);  
+} // End setup function.
 
-// Function to set the DAC, Accepts the Value to be sent and the cannel of the DAC to be used.
-void setDac(int value, int channel) {
-  byte dacRegister = 0b00110000; // Sets default DAC registers B00110000, 1st bit choses DAC, A=0 B=1, 2nd Bit bypasses input Buffer, 3rd bit sets output gain to 1x, 4th bit controls active low shutdown. LSB are insignifigant here.
-  int dacSecondaryByteMask = 0xFF; // Isolates the last 8 bits of the 12 bit value, B0000000011111111.
-  byte dacPrimaryByte = (value >> 8) | dacRegister; //Value is a maximum 12 Bit value, it is shifted to the right by 8 bytes to get the first 4 MSB out of the value for entry into th Primary Byte, then ORed with the dacRegister  
-  byte dacSecondaryByte = value & dacSecondaryByteMask; // compares the 12 bit value to isolate the 8 LSB and reduce it to a single byte. 
-  // Sets the MSB in the primaryByte to determine the DAC to be set, DAC A=0, DAC B=1
-  switch (channel) {
-   case 0:
-     dacPrimaryByte &= ~(1 << 7);     
-   break;
-   case 1:
-     dacPrimaryByte |= (1 << 7);  
-  }
-  noInterrupts(); // disable interupts to prepare to send data to the DAC
-  digitalWrite(k_dacChipSelectPin,LOW); // take the Chip Select pin low to select the DAC:
-  SPI.transfer(dacPrimaryByte); //  send in the Primary Byte:
-  SPI.transfer(dacSecondaryByte);// send in the Secondary Byte
-  digitalWrite(k_dacChipSelectPin,HIGH);// take the Chip Select pin high to de-select the DAC:
-  interrupts(); // Enable interupts
-}
-
-// This the best way I can think of rounding a floating point number to X decimal places.
-float roundFloat(float number, int decimals) {
-  float rounded_float = round(number * pow(10, decimals)) / pow(10, decimals);
-  return rounded_float; 
-}
+// Start loop function:
+void loop() {  
+  g_encoderPos += encoder->getValue();
+  if (g_encoderPos != g_encoderOldPos) {
+    encoderMoved = true;
+    g_encoderOldPos = g_encoderPos;
+  } else {
+     encoderMoved = false;
+  }  
+  // Reads input voltags from the load source. ****MAXIMUM 24V INPUT**** 
+  readInputVoltage();
+  // Calculates and sets required load current. Accepts the mode variable which defines the mode of the unit, ie. Constant current, resistance or power.  
+  setLoadCurrent(g_mode);
+  // Calculates heatsink temprature and sets fan speed accordingly.  
+  setFanSpeed();
+  // Updates the LCD display. Accepts the lcdDisplay variable which defines if the values or menu is to be displayed.
+  updateLCD(g_lcdDisplay); 
+}// End of loop function.
