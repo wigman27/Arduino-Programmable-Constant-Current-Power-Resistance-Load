@@ -167,15 +167,15 @@ float readAdc(int channel) {
 }
 
 // Function to read the input voltage and return a float number represention volts.
-float readInputVoltage() {
+void readInputVoltage() {
   g_inputVoltage = (readAdc(k_adcInputVoltage)) * 12.03;
   if (g_inputVoltage < 0.018) {
     g_inputVoltage = 0;
-  }  
+  }
 }
 
 // Function to measure the actual load current.
-float readMeasuredCurrent() {
+void readMeasuredCurrent() {
    g_measuredCurrent = (readAdc(k_adcMeasuredCurrent)) / 0.1000;
 }
 
