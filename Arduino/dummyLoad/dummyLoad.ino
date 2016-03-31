@@ -60,25 +60,25 @@ const int k_displayMenu = 1;           // Constant used for the LCD to display t
 
 //Languages
 #ifdef ENGLISH
-  char* language_name="Dummy Load";
-  char* language_version="Version ";
-  char* language_voltage="Voltage";
-  char* language_current="Current";
-  char* language_resistance="Resistance";
-  char* language_power="Power";
-  char* language_mode="Please Select Mode";
-  char* language_cancel="Cancel";
+  char const * language_name="Dummy Load";
+  char const * language_version="Version ";
+  char const * language_voltage="Voltage";
+  char const * language_current="Current";
+  char const * language_resistance="Resistance";
+  char const * language_power="Power";
+  char const * language_mode="Please Select Mode";
+  char const * language_cancel="Cancel";
 #endif
 
 #ifdef GERMAN
-  char* language_name="Elekronische Last";
-  char* language_version="Version ";
-  char* language_voltage="Spannung";
-  char* language_current="Strom";
-  char* language_resistance="Widerstand";
-  char* language_power="Leistung";
-  char* language_mode="Bitte Modus wählen";
-  char* language_cancel="Abbrechen";
+  char const * language_name="Elekronische Last";
+  char const * language_version="Version ";
+  char const * language_voltage="Spannung";
+  char const * language_current="Strom";
+  char const * language_resistance="Widerstand";
+  char const * language_power="Leistung";
+  char const * language_mode="Bitte Modus wählen";
+  char const * language_cancel="Abbrechen";
 #endif
 
 // Modes of operations
