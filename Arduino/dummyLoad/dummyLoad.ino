@@ -313,16 +313,20 @@ function further down which will update the displaytype so it will then equal di
 it will then satisfy case 1 below and update the LCD to the menu functions.
 */
 void updateLCD(int displayType) {  
+  // 20 char display
+  char buf[21];
   switch (displayType) {
     case 0:
       if (updateDisplay()) {
         lcd.clear();
-        lcd.print(strcat(language_voltage," ="));
+        sprintf(buf, "%s = ", language_voltage);
+        lcd.print(buf);
         lcd.setCursor(10,0);
         lcd.print(g_inputVoltage,3);
         lcd.print("V");        
         lcd.setCursor(0,1);
-        lcd.print(strcat(language_current," ="));
+        sprintf(buf, "%s =", language_current);
+        lcd.print(buf);
         lcd.setCursor(10,1);
         lcd.print(g_setCurrent,3);
         lcd.print("A");
@@ -331,7 +335,8 @@ void updateLCD(int displayType) {
           lcd.print("<");
         }
         lcd.setCursor(0,2);
-        lcd.print(strcat(language_resistance," ="));
+        sprintf(buf, "%s =", language_resistance);
+        lcd.print(buf);
         lcd.setCursor(10,2);
         lcd.print(g_setResistance,3);
         lcd.print(char(0xF4));
@@ -340,7 +345,8 @@ void updateLCD(int displayType) {
           lcd.print("<");
         }
         lcd.setCursor(0,3);
-        lcd.print(strcat(language_power," ="));
+        sprintf(buf, "%s =", language_power);
+        lcd.print(buf);
         lcd.setCursor(10,3);
         lcd.print(g_setPower,3);
         lcd.print("W");
